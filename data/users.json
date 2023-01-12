@@ -1,0 +1,58 @@
+[
+  {
+    "fullName": "hasnain anwar",
+    "uuid": "537345f2-cc8e-469b-85ee-8ec7211dfc75",
+    "firstName": "hasnain",
+    "lastName": "anwar",
+    "email": "hasnain@email.com",
+    "password": "Hasnain123@",
+    "gender": "male",
+    "role": "admin",
+    "isActive": true,
+    "isDeleted": false,
+    "createdAt": "2023-01-12T10:51:54.786Z",
+    "updatedAt": "2023-01-12T10:51:54.786Z"
+  },
+  {
+    "fullName": "usman anwar",
+    "uuid": "de617978-dea2-48e2-928c-5cc09f2cce2c",
+    "firstName": "usman",
+    "lastName": "anwar",
+    "email": "usman@email.com",
+    "password": "Usman123@",
+    "gender": "male",
+    "role": "admin",
+    "isActive": true,
+    "isDeleted": false,
+    "createdAt": "2023-01-12T10:52:41.777Z",
+    "updatedAt": "2023-01-12T10:52:41.777Z"
+  },
+  {
+    "fullName": "arsalan ahsan",
+    "uuid": "ba079468-3d62-46cd-a357-6c31f46efcca",
+    "firstName": "arsalan",
+    "lastName": "ahsan",
+    "email": "arsalan@email.com",
+    "password": "Arsalan123@",
+    "gender": "male",
+    "role": "user",
+    "isActive": true,
+    "isDeleted": false,
+    "createdAt": "2023-01-12T10:53:03.163Z",
+    "updatedAt": "2023-01-12T10:53:31.485Z"
+  },
+  {
+    "fullName": "ali haider",
+    "uuid": "95af53d1-ab55-45c3-8f84-f5ef5e38b5b6",
+    "firstName": "ali",
+    "lastName": "haider",
+    "email": "ali@email.com",
+    "password": "Alihaider123@",
+    "gender": "male",
+    "role": "super-admin",
+    "isActive": true,
+    "isDeleted": false,
+    "createdAt": "2023-01-12T10:52:21.269Z",
+    "updatedAt": "2023-01-12T10:54:19.427Z"
+  }
+]
