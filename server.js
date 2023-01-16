@@ -1,7 +1,7 @@
 require('dotenv').config();
 // psql -U postgres -h localhost -W
 // command to connect postgresql server using psql
-const { sequelize, User, Post, Comment } = require('./models');
+const { sequelize } = require('./models');
 const express = require('express');
 const { json, urlencoded } = require('body-parser');
 const cors = require('cors');
@@ -40,7 +40,7 @@ app.listen(PORT, async (error) => {
     console.log(`Server running at http://localhost:${PORT}`);
     try {
       await sequelize.authenticate();
-      console.log('Connection has been established successfully!');
+      console.log('Successfully connected to the database!');
       // call the sequelize.sync method will cause erase everything from database so ist better to use sequelize.authenticate method
       // sequelize.sync({ force: true, match: /sequelize$/ });
     } catch (error) {

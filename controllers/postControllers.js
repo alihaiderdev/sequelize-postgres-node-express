@@ -1,4 +1,5 @@
-const { Post, User, Comment } = require('../models');
+const { sequelize, Post, User, Comment } = require('../models');
+const { Sequelize } = require('sequelize');
 
 exports.createPost = async (req, res) => {
   try {
@@ -44,18 +45,45 @@ exports.getPosts = async (req, res) => {
   const query = {
     include: [
       { model: User, as: 'user', attributes: ['email', 'role', 'uuid'] },
-      { model: Comment, as: 'comments', attributes: ['comment', 'uuid'] },
+      {
+        model: Comment,
+        as: 'comments',
+        attributes: ['comment', 'uuid'],
+        attributes: {
+          // include: ['comment', 'uuid'],
+          exclude: ['uuid'],
+        },
+        include: [
+          {
+            model: User,
+            as: 'user',
+            attributes: ['email', 'role'],
+            // OR
+            // here we must have to use include or exclude one at a time if we use both at a time it will not work and return all fields
+            // attributes: {
+            //   // include: [[sequelize.fn('COUNT', sequelize.col('hats')), 'n_hats']],
+            //   // exclude: ['role'],
+            // },
+          },
+        ],
+      },
     ],
+    attributes: {
+      exclude: ['id', 'userId'],
+    },
+    // https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#ordering-and-grouping
+    order: [[{ model: Comment, as: 'comments' }, 'comment', 'desc']], // include model fileds ordering/sorting
     // order: [['title', 'ASC']], // here asc and desc is case insensitive
     limit: per_page,
     offset: (page - 1) * per_page,
     distinct: true, // here we add distinct: true to the query. Without this Sequelize returns the count for the values without an inner join/required: true.
   };
   if (fields) {
-    query.attributes = fields.split(',');
+    query.attributes = [...fields.split(',')];
   }
   if (sort) {
-    query.order = sort.split(',').map((s) => [s, sort_direction]);
+    console.log(query.order, ...query.order);
+    query.order = [...sort.split(',').map((s) => [s, sort_direction]), ...query.order];
   }
 
   const { count, rows } = await Post.findAndCountAll(query);
