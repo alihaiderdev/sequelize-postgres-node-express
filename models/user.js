@@ -125,6 +125,8 @@ module.exports = (sequelize, DataTypes) => {
       tableName: 'users',
       // createdAt: 'created_at',
       // updatedAt: 'updated_at',
+      // paranoid: true, // for soft delete table
+      // underscored: true, // for naming fields
     }
   );
   return User;
